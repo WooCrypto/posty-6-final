@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Production
+build/
+dist/
+.expo/
+.expo-shared/
+
+# Misc
+.DS_Store
+.env
+.env.local
+.env.*.local
+*.log
+*.pem
+.vscode/
+.idea/
+
+# Magic-posty nested folder (separate repo)
+Magic-posty/
+
+# OS
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
