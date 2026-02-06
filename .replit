@@ -1,0 +1,68 @@
+modules = ["nodejs-20", "web", "python-3.11", "postgresql-16"]
+[nix]
+channel = "stable-25_05"
+packages = ["unzip"]
+
+[agent]
+expertMode = true
+integrations = ["github:1.0.0", "stripe:2.0.0", "resend:1.0.0"]
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Expo Web"
+
+[[workflows.workflow]]
+name = "Expo Web"
+author = "agent"
+
+[workflows.workflow.metadata]
+outputType = "webview"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "DARK_MODE=class expo start --web --port 5000 --clear"
+waitForPort = 5000
+
+[[ports]]
+localPort = 3001
+externalPort = 3000
+
+[[ports]]
+localPort = 5000
+externalPort = 80
+
+[[ports]]
+localPort = 5001
+externalPort = 3003
+
+[[ports]]
+localPort = 5174
+externalPort = 3001
+
+[[ports]]
+localPort = 8081
+externalPort = 8081
+
+[userenv]
+
+[userenv.shared]
+SMTP_HOST = "smtp.gmail.com"
+SMTP_PORT = "465"
+SMTP_FROM = "rewardmailsclub@gmail.com"
+EXPO_PUBLIC_SUPABASE_URL = "https://ibexcjcoogvlptckvtnp.supabase.co"
+EXPO_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImliZXhjamNvb2d2bHB0Y2t2dG5wIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkxMzIwMjUsImV4cCI6MjA4NDcwODAyNX0.G5af4PmY0LQ1H5_hPVaq4EjAiGh06oWzI9PUWPRWOTU"
+EXPO_PUBLIC_GOOGLE_WEB_CLIENT_ID = "616910990847-3ro9tbmfl9ajfomvmhpmctijnhe4992f.apps.googleusercontent.com"
+
+[deployment]
+deploymentTarget = "autoscale"
+build = ["npx", "expo", "export", "--platform", "web"]
+run = ["npx", "serve", "dist", "-s", "-l", "5000"]
+publicDir = "dist"

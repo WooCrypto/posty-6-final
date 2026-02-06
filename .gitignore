@@ -1,33 +1,96 @@
-# Dependencies
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+
+# ===========================
+# SECRETS & ENVIRONMENT FILES
+# ===========================
+# CRITICAL: Never commit these to GitHub!
+.env
+.env.*
+.env.local
+.env.development
+.env.production
+.env*.local
+env2/
+
+# ===========================
+# DEPENDENCIES
+# ===========================
 node_modules/
 .pnp
 .pnp.js
 
-# Testing
-coverage/
-
-# Production
-build/
-dist/
+# ===========================
+# EXPO & REACT NATIVE
+# ===========================
 .expo/
-.expo-shared/
+dist/
+web-build/
+expo-env.d.ts
+*.hbc
 
-# Misc
-.DS_Store
-.env
-.env.local
-.env.*.local
+# Native build folders
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+/ios
+/android
+
+# Metro bundler
+.metro-health-check*
+
+# ===========================
+# BUILD & CACHE
+# ===========================
+.cache/
+*.tsbuildinfo
+.turbo
+
+# ===========================
+# DEBUG LOGS
+# ===========================
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+expo.log
 *.log
-*.pem
-.vscode/
+
+# ===========================
+# IDE & EDITOR
+# ===========================
 .idea/
+.vscode/
+*.swp
+*.swo
+*~
 
-# Magic-posty nested folder (separate repo)
-Magic-posty/
-
-# OS
+# ===========================
+# OS FILES
+# ===========================
+.DS_Store
 Thumbs.db
+*.pem
 
-# Temporary files
-*.tmp
-*.temp
+# ===========================
+# REPLIT SPECIFIC
+# ===========================
+.replit
+replit.nix
+.upm/
+.local/
+.config/
+
+# ===========================
+# GENERATED FILES
+# ===========================
+generated-icon.png
+attached_assets/
+
+# ===========================
+# LOCK FILES (optional - uncomment if you want to exclude)
+# ===========================
+# bun.lock
+# package-lock.json
